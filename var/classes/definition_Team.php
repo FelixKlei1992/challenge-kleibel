@@ -6,9 +6,9 @@
  * Title: Team
  *
  * Fields Summary:
- * - team_name [textarea]
+ * - team_name [input]
  * - team_logo [image]
- * - team_trainer [textarea]
+ * - team_trainer [input]
  * - team_foundingDate [numeric]
  * - team_player [manyToManyObjectRelation]
  * - team_location [manyToOneRelation]
@@ -21,7 +21,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => 'Team',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1725713566,
+   'modificationDate' => 1725719843,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -79,7 +79,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                  'name' => 'team_name',
                  'title' => 'Name',
                  'tooltip' => '',
@@ -97,18 +97,23 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'maxLength' => NULL,
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
                  'showCharCount' => false,
-                 'excludeFromSearchIndex' => false,
-                 'height' => '',
                  'width' => '',
+                 'defaultValueGenerator' => '',
               )),
               1 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
                  'name' => 'team_logo',
                  'title' => 'Logo',
                  'tooltip' => '',
-                 'mandatory' => true,
+                 'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
@@ -127,11 +132,11 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'height' => '',
               )),
               2 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                  'name' => 'team_trainer',
                  'title' => 'Trainer',
                  'tooltip' => '',
-                 'mandatory' => true,
+                 'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
@@ -145,18 +150,23 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'maxLength' => NULL,
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
                  'showCharCount' => false,
-                 'excludeFromSearchIndex' => false,
-                 'height' => '',
                  'width' => '',
+                 'defaultValueGenerator' => '',
               )),
               3 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
                  'name' => 'team_foundingDate',
                  'title' => 'Founding Date',
                  'tooltip' => '',
-                 'mandatory' => true,
+                 'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
@@ -213,10 +223,10 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'visibleFields' => 
                 array (
                 ),
-                 'allowToCreateNewObject' => false,
+                 'allowToCreateNewObject' => true,
                  'allowToClearRelation' => true,
                  'optimizedAdminLoading' => false,
-                 'enableTextSelection' => false,
+                 'enableTextSelection' => true,
                  'visibleFieldDefinitions' => 
                 array (
                 ),

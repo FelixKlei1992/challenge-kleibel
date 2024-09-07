@@ -5,12 +5,11 @@
  * Variants: no
  *
  * Fields Summary:
- * - player_firstName [textarea]
- * - player_lastName [textarea]
+ * - player_firstName [input]
+ * - player_lastName [input]
  * - player_number [numeric]
  * - player_dateOfBirth [date]
  * - player_possition [select]
- * - player_team [manyToOneRelation]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -20,7 +19,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1725711785,
+   'modificationDate' => 1725714898,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -78,7 +77,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                  'name' => 'player_firstName',
                  'title' => 'First Name',
                  'tooltip' => '',
@@ -96,14 +95,19 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'maxLength' => NULL,
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
                  'showCharCount' => false,
-                 'excludeFromSearchIndex' => false,
-                 'height' => '',
                  'width' => '',
+                 'defaultValueGenerator' => '',
               )),
               1 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                  'name' => 'player_lastName',
                  'title' => 'Last Name',
                  'tooltip' => '',
@@ -121,18 +125,23 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'maxLength' => NULL,
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
                  'showCharCount' => false,
-                 'excludeFromSearchIndex' => false,
-                 'height' => '',
                  'width' => '',
+                 'defaultValueGenerator' => '',
               )),
               2 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
                  'name' => 'player_number',
                  'title' => 'Number',
                  'tooltip' => '',
-                 'mandatory' => true,
+                 'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
@@ -162,7 +171,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'name' => 'player_dateOfBirth',
                  'title' => 'Date Of Birth',
                  'tooltip' => '',
-                 'mandatory' => true,
+                 'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
@@ -186,7 +195,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'name' => 'player_possition',
                  'title' => 'Possition',
                  'tooltip' => '',
-                 'mandatory' => true,
+                 'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
@@ -271,44 +280,6 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'optionsProviderType' => 'configure',
                  'optionsProviderClass' => '',
                  'optionsProviderData' => '',
-              )),
-              5 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
-                 'name' => 'player_team',
-                 'title' => 'Player Team',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'fieldtype' => '',
-                 'relationType' => true,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
-                 'classes' => 
-                array (
-                ),
-                 'displayMode' => 'grid',
-                 'pathFormatterClass' => '',
-                 'assetInlineDownloadAllowed' => false,
-                 'assetUploadPath' => '',
-                 'allowToClearRelation' => true,
-                 'objectsAllowed' => false,
-                 'assetsAllowed' => false,
-                 'assetTypes' => 
-                array (
-                ),
-                 'documentsAllowed' => false,
-                 'documentTypes' => 
-                array (
-                ),
-                 'width' => '',
               )),
             ),
              'locked' => false,
