@@ -9,6 +9,7 @@
  * - team_logo [image]
  * - team_trainer [textarea]
  * - team_foundingDate [numeric]
+ * - team_player [manyToManyObjectRelation]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -18,7 +19,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1725709658,
+   'modificationDate' => 1725712245,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -153,7 +154,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'name' => 'team_foundingDate',
                  'title' => 'Founding Date',
                  'tooltip' => '',
-                 'mandatory' => false,
+                 'mandatory' => true,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
@@ -177,6 +178,48 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'decimalPrecision' => NULL,
                  'width' => '',
                  'defaultValueGenerator' => '',
+              )),
+              4 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
+                 'name' => 'team_player',
+                 'title' => 'Team Player',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => true,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'classes' => 
+                array (
+                  0 => 
+                  array (
+                    'classes' => 'Player',
+                  ),
+                ),
+                 'displayMode' => 'grid',
+                 'pathFormatterClass' => '',
+                 'maxItems' => NULL,
+                 'visibleFields' => 
+                array (
+                ),
+                 'allowToCreateNewObject' => false,
+                 'allowToClearRelation' => true,
+                 'optimizedAdminLoading' => false,
+                 'enableTextSelection' => false,
+                 'visibleFieldDefinitions' => 
+                array (
+                ),
+                 'width' => '',
+                 'height' => '',
               )),
             ),
              'locked' => false,
