@@ -6,6 +6,7 @@ use Pimcore\Controller\FrontendController;
 use Symfony\Bridge\Twig\Attribute\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use \Pimcore\Model\DataObject;
 
 class ContentController extends FrontendController
 {
@@ -17,7 +18,13 @@ class ContentController extends FrontendController
     
     public function productAction(Request $request): Response
     {
-        return $this->render('content/teams.html.twig');
+        
+        $teams = new DataObject\Soccerteam\Listing();
+        //$teams->setCondition("name LIKE ?", "%bernie%");
+        $teams->load();
+        return $this->render('content/teams.html.twig', [
+            'teams' => $teams,
+        ]);
     }
 
 }
