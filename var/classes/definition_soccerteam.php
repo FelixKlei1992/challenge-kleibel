@@ -3,23 +3,24 @@
 /**
  * Inheritance: no
  * Variants: no
+ * Title: soccerteam Title
  *
  * Fields Summary:
- * - player_firstName [input]
- * - player_lastName [input]
- * - player_number [numeric]
- * - player_dateOfBirth [date]
- * - player_possition [select]
+ * - team_name [input]
+ * - team_logo [image]
+ * - team_trainer [input]
+ * - team_foundingDate [numeric]
+ * - player [manyToManyObjectRelation]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
-   'id' => 'Player',
-   'name' => 'Player',
-   'title' => '',
+   'id' => 'soccerteam',
+   'name' => 'soccerteam',
+   'title' => 'soccerteam Title',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1725789253,
+   'modificationDate' => 1725794232,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -78,8 +79,8 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
               0 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'player_firstName',
-                 'title' => 'First Name',
+                 'name' => 'team_name',
+                 'title' => 'Name',
                  'tooltip' => '',
                  'mandatory' => true,
                  'noteditable' => false,
@@ -91,7 +92,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
-                 'visibleSearch' => false,
+                 'visibleSearch' => true,
                  'blockedVarsForExport' => 
                 array (
                 ),
@@ -107,11 +108,34 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'defaultValueGenerator' => '',
               )),
               1 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'player_lastName',
-                 'title' => 'Last Name',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
+                 'name' => 'team_logo',
+                 'title' => 'Logo',
                  'tooltip' => '',
-                 'mandatory' => true,
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'uploadPath' => '',
+                 'width' => '',
+                 'height' => '',
+              )),
+              2 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'name' => 'team_trainer',
+                 'title' => 'Trainer',
+                 'tooltip' => '',
+                 'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
@@ -136,10 +160,10 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'width' => '',
                  'defaultValueGenerator' => '',
               )),
-              2 => 
+              3 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-                 'name' => 'player_number',
-                 'title' => 'Number',
+                 'name' => 'team_foundingDate',
+                 'title' => 'Founding Date',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -158,42 +182,18 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'defaultValue' => NULL,
                  'integer' => true,
                  'unsigned' => false,
-                 'minValue' => 1.0,
-                 'maxValue' => 99.0,
+                 'minValue' => 1500.0,
+                 'maxValue' => 3000.0,
                  'unique' => false,
                  'decimalSize' => NULL,
                  'decimalPrecision' => NULL,
                  'width' => '',
                  'defaultValueGenerator' => '',
               )),
-              3 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
-                 'name' => 'player_dateOfBirth',
-                 'title' => 'Date Of Birth',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'fieldtype' => '',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
-                 'defaultValue' => NULL,
-                 'useCurrentDate' => false,
-                 'columnType' => 'date',
-                 'defaultValueGenerator' => '',
-              )),
               4 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-                 'name' => 'player_possition',
-                 'title' => 'Possition',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
+                 'name' => 'player',
+                 'title' => 'Player',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -202,84 +202,33 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'fieldtype' => '',
-                 'relationType' => false,
+                 'relationType' => true,
                  'invisible' => false,
                  'visibleGridView' => false,
                  'visibleSearch' => false,
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'options' => 
+                 'classes' => 
                 array (
                   0 => 
                   array (
-                    'key' => 'Goalkeeper',
-                    'value' => 'goalkeeper',
-                  ),
-                  1 => 
-                  array (
-                    'key' => 'Right Back',
-                    'value' => 'rightBack',
-                  ),
-                  2 => 
-                  array (
-                    'key' => 'Left Back',
-                    'value' => 'leftBack',
-                  ),
-                  3 => 
-                  array (
-                    'key' => 'Center Back',
-                    'value' => 'centerBack',
-                  ),
-                  4 => 
-                  array (
-                    'key' => 'Sweeper',
-                    'value' => 'sweeper',
-                  ),
-                  5 => 
-                  array (
-                    'key' => 'Central Midfielder',
-                    'value' => 'centralMidfielder',
-                  ),
-                  6 => 
-                  array (
-                    'key' => 'Defensive Midfielder',
-                    'value' => 'defensiveMidfielder',
-                  ),
-                  7 => 
-                  array (
-                    'key' => 'Attacking Midfielder',
-                    'value' => 'attackingMidfielder',
-                  ),
-                  8 => 
-                  array (
-                    'key' => 'Wide Midfielders',
-                    'value' => 'wideMidfielders',
-                  ),
-                  9 => 
-                  array (
-                    'key' => 'Striker',
-                    'value' => 'striker',
-                  ),
-                  10 => 
-                  array (
-                    'key' => 'Second Striker',
-                    'value' => 'secondStriker',
-                  ),
-                  11 => 
-                  array (
-                    'key' => 'Winger',
-                    'value' => 'winger',
+                    'classes' => 'Player',
                   ),
                 ),
-                 'defaultValue' => '',
-                 'columnLength' => 190,
-                 'dynamicOptions' => false,
-                 'defaultValueGenerator' => '',
+                 'displayMode' => 'grid',
+                 'pathFormatterClass' => '',
+                 'maxItems' => NULL,
+                 'visibleFields' => 'player_firstName',
+                 'allowToCreateNewObject' => false,
+                 'allowToClearRelation' => true,
+                 'optimizedAdminLoading' => false,
+                 'enableTextSelection' => false,
+                 'visibleFieldDefinitions' => 
+                array (
+                ),
                  'width' => '',
-                 'optionsProviderType' => 'configure',
-                 'optionsProviderClass' => '',
-                 'optionsProviderData' => '',
+                 'height' => '',
               )),
             ),
              'locked' => false,

@@ -1,0 +1,17 @@
+{% extends 'content/layout.html.twig' %}
+{% block content %}
+    <h1>{{ pimcore_input("headline", {"width": 540}) }}</h1>
+
+    <div class="soccerteam-info">
+        {% if editmode %}
+            {{ pimcore_relation("soccerteam") }}
+        {% else %}
+            {% set soccerteam = pimcore_relation("soccerteam").element %} 
+            {% if soccerteam %} 
+                <h2>{{ soccerteam.team_name }}</h2>
+                <div class="content">
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

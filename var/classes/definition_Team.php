@@ -10,18 +10,17 @@
  * - team_logo [image]
  * - team_trainer [input]
  * - team_foundingDate [numeric]
- * - team_player [manyToManyObjectRelation]
- * - team_location [manyToOneRelation]
+ * - player [manyToManyObjectRelation]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
-   'id' => 'Team',
+   'id' => '1',
    'name' => 'Team',
    'title' => 'Team',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1725719843,
+   'modificationDate' => 1725788935,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -193,8 +192,8 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
               )),
               4 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
-                 'name' => 'team_player',
-                 'title' => 'Team Player',
+                 'name' => 'player',
+                 'title' => 'Player',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -220,60 +219,16 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'displayMode' => 'grid',
                  'pathFormatterClass' => '',
                  'maxItems' => NULL,
-                 'visibleFields' => 
-                array (
-                ),
-                 'allowToCreateNewObject' => true,
+                 'visibleFields' => 'player_firstName',
+                 'allowToCreateNewObject' => false,
                  'allowToClearRelation' => true,
                  'optimizedAdminLoading' => false,
-                 'enableTextSelection' => true,
+                 'enableTextSelection' => false,
                  'visibleFieldDefinitions' => 
                 array (
                 ),
                  'width' => '',
                  'height' => '',
-              )),
-              5 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
-                 'name' => 'team_location',
-                 'title' => 'Location',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'fieldtype' => '',
-                 'relationType' => true,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
-                 'classes' => 
-                array (
-                  0 => 
-                  array (
-                    'classes' => 'Location',
-                  ),
-                ),
-                 'displayMode' => 'grid',
-                 'pathFormatterClass' => '',
-                 'assetInlineDownloadAllowed' => false,
-                 'assetUploadPath' => '',
-                 'allowToClearRelation' => true,
-                 'objectsAllowed' => true,
-                 'assetsAllowed' => false,
-                 'assetTypes' => 
-                array (
-                ),
-                 'documentsAllowed' => false,
-                 'documentTypes' => 
-                array (
-                ),
-                 'width' => '',
               )),
             ),
              'locked' => false,
