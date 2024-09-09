@@ -5,18 +5,18 @@
  * Variants: no
  *
  * Fields Summary:
- * - location_coordinates [geopoint]
- * - location_name [textarea]
+ * - location_geoPoint [geopoint]
+ * - location_name [input]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
-   'id' => 'Location',
-   'name' => 'Location',
+   'id' => 'location',
+   'name' => 'location',
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1725715422,
+   'modificationDate' => 1725883145,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -75,10 +75,10 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
               0 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Geopoint::__set_state(array(
-                 'name' => 'location_coordinates',
-                 'title' => 'Coordinates',
+                 'name' => 'location_geoPoint',
+                 'title' => 'Geo Point',
                  'tooltip' => '',
-                 'mandatory' => true,
+                 'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
                  'locked' => false,
@@ -96,13 +96,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'lng' => 0.0,
                  'zoom' => 1,
                  'mapType' => 'roadmap',
-                 'height' => 180,
+                 'height' => 380,
                  'width' => '',
               )),
               1 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                  'name' => 'location_name',
-                 'title' => 'Location-name',
+                 'title' => 'Name',
                  'tooltip' => '',
                  'mandatory' => true,
                  'noteditable' => false,
@@ -118,11 +118,16 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'maxLength' => 25,
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
                  'showCharCount' => false,
-                 'excludeFromSearchIndex' => false,
-                 'height' => '',
                  'width' => '',
+                 'defaultValueGenerator' => '',
               )),
             ),
              'locked' => false,

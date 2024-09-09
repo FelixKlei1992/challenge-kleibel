@@ -1,20 +1,24 @@
 {% extends 'content/layout.html.twig' %}
 {% block content %}
 	<h1>{{ pimcore_input("headline", {"width": 540}) }}</h1>
-
 	<div
 		class="soccerteam-info">
 
 		{# <p>{{ dump(teams) }}</p> #}
-        <h1> Teams </h1>
-        <ul>
-		{% for team in teams %}
-			<li>
-            <a href="team_details/{{team.ID}}">{{ team.team_name }}<a>
-            </li>
-		{% endfor %}
-        </ul>
+		<h1>
+			Teams
+		</h1>
+		<ul>
+			{% for team in teams %}
+				<li>
+					<a href="team_details/{{team.ID}}">{{ team.team_name }}<a>
+		
+					({{ team.player|length }} players)
+
+
+				</li>
+			{% endfor %}
+
+		</ul>
 	</div>
 {% endblock %}
-
-

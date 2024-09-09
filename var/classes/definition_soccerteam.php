@@ -11,6 +11,7 @@
  * - team_trainer [input]
  * - team_foundingDate [numeric]
  * - player [manyToManyObjectRelation]
+ * - location [manyToOneRelation]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -20,7 +21,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => 'soccerteam Title',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1725794232,
+   'modificationDate' => 1725883514,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -213,13 +214,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 array (
                   0 => 
                   array (
-                    'classes' => 'Player',
+                    'classes' => 'player',
                   ),
                 ),
                  'displayMode' => 'grid',
                  'pathFormatterClass' => '',
                  'maxItems' => NULL,
-                 'visibleFields' => 'player_firstName',
+                 'visibleFields' => 'player_lastName',
                  'allowToCreateNewObject' => false,
                  'allowToClearRelation' => true,
                  'optimizedAdminLoading' => false,
@@ -229,6 +230,48 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 ),
                  'width' => '',
                  'height' => '',
+              )),
+              5 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+                 'name' => 'location',
+                 'title' => 'Location',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => true,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'classes' => 
+                array (
+                  0 => 
+                  array (
+                    'classes' => 'location',
+                  ),
+                ),
+                 'displayMode' => 'grid',
+                 'pathFormatterClass' => '',
+                 'assetInlineDownloadAllowed' => false,
+                 'assetUploadPath' => '',
+                 'allowToClearRelation' => true,
+                 'objectsAllowed' => true,
+                 'assetsAllowed' => false,
+                 'assetTypes' => 
+                array (
+                ),
+                 'documentsAllowed' => false,
+                 'documentTypes' => 
+                array (
+                ),
+                 'width' => '',
               )),
             ),
              'locked' => false,

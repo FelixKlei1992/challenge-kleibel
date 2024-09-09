@@ -1,8 +1,76 @@
 {% extends 'content/layout.html.twig' %}
 {% block content %}
-	<h1>{{ pimcore_input("headline", {"width": 540}) }}</h1>
+    <div>
+        <h1>{{ team.team_name }}</h1>
+		<h2>Founding-year: </h2> <p>{{ team.team_foundingDate }}</p>
+		<h2>Trainer: </h2> <p>{{ team.team_trainer }}</p>
 
-{{ team.team_name }}
+
+	
+		
+        <h2>All Players: </h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Position</th>
+                    <th>Number</th>
+                </tr>
+            </thead>
+            <tbody>
+				{% for player in team.player %}
+					{# todo: wäre es ok das alter direkt im twig zu berechen? 
+                    {% set dob = player.player_dateOfBirth|date("Y-m-d") %}
+                    {% set now = "now"|date("Y-m-d") %}
+                    {% set birthYear = dob|date("Y") %}
+                    {% set age = now|date("Y") - birthYear %}
+                    {% if now|date("md") < dob|date("md") %}
+                        {% set age = age - 1 %}
+                    {% endif %} #}
+
+                    <tr>
+                        <td>{{ player.player_firstName }}</td>
+                        <td>{{ player.player_lastName }}</td>
+                        <td>{{ player.player_dateOfBirth|date("Y-m-d") }}</td>
+                        <td>{{ player.player_possition }}</td>
+                        <td>{{ player.player_number }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+	<h2>Location: </h2> <p>{{ team.location.location_name }}
+
+        <!-- Map Container -->
+        <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+    </div>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Map Initialization Script -->
+    <script>
+        // Initialisiere die Karte
+        var map = L.map('map').setView([{{ team.location.location_geoPoint.latitude }}, {{ team.location.location_geoPoint.longitude }}], 13);
+
+        // Füge den Tile Layer hinzu
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Füge einen Marker für die Team-Location hinzu
+        L.marker([{{ team.location.location_geoPoint.latitude }}, {{ team.location.location_geoPoint.longitude }}]).addTo(map)
+            .bindPopup('Team Location')
+            .openPopup();
+    </script>
+{% endblock %}
+
+
 
 	{# <div
 		class="soccerteam-info">
@@ -15,6 +83,3 @@
 		{% endfor %}
         </ul>
 	</div> #}
-{% endblock %}
-
-{# team.player.name #}
