@@ -1,0 +1,5 @@
+object_view:
+    path: /team_details/{id}
+    defaults: { _controller: App\Controller\TeamsController::view }
+    requirements:
+        id: \d+

@@ -2,19 +2,19 @@
 {% block content %}
 	<h1>{{ pimcore_input("headline", {"width": 540}) }}</h1>
 
-	<div
+{{ team.team_name }}
+
+	{# <div
 		class="soccerteam-info">
 
 		{# <p>{{ dump(teams) }}</p> #}
-        <h1> Teams </h1>
+        {# <h1> Teams </h1>
         <ul>
 		{% for team in teams %}
-			<li>
-            <a href="team_details/{{team.ID}}">{{ team.team_name }}<a>
-            </li>
+			<li>{{ team.team_name }}</li>
 		{% endfor %}
         </ul>
-	</div>
+	</div> #}
 {% endblock %}
 
-
+{# team.player.name #}
