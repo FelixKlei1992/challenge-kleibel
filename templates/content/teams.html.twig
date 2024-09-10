@@ -1,24 +1,26 @@
 {% extends 'content/layout.html.twig' %}
 {% block content %}
-	<h1>{{ pimcore_input("headline", {"width": 540}) }}</h1>
-	<div
-		class="soccerteam-info">
-
-		{# <p>{{ dump(teams) }}</p> #}
-		<h1>
-			Teams
-		</h1>
-		<ul>
-			{% for team in teams %}
-				<li>
-					<a href="team_details/{{team.ID}}">{{ team.team_name }}<a>
-		
-					({{ team.player|length }} players)
-
-
-				</li>
-			{% endfor %}
-
-		</ul>
-	</div>
+<div class="container mt-5">
+    <h1 class="mb-4">{{ pimcore_input("headline", {"width": 540}) }}</h1>
+    <div class="soccerteam-info">
+        <h2 class="mb-4">Teams</h2>
+        <ul class="list-group">
+            {% for team in teams %}
+                <li class="list-group-item d-flex align-items-center">
+                    <div class="mr-3">
+                        {% if team.team_logo is not empty %}
+                            <img src="{{ team.team_logo.getThumbnail('logo_thumbnail') }}" alt="{{ team.team_name }} logo" class="img-thumbnail" style="width: 100px; height: auto;">
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h5 class="mb-1">
+                            <a href="team_details/{{ team.ID }}" class="text-decoration-none">{{ team.team_name }}</a>
+                        </h5>
+                        <p class="mb-0">Number of Players: {{ team.player|length }} players</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

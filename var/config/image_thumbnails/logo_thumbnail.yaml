@@ -1,0 +1,28 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    logo_thumbnail:
+                        items:
+                            -
+                                method: cover
+                                arguments:
+                                    width: 100
+                                    height: 100
+                                    positioning: center
+                                    forceResize: false
+                        medias: {  }
+                        name: logo_thumbnail
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1725955897
+                        creationDate: 1725955877
+                        preserveAnimation: false
