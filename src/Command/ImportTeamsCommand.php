@@ -2,7 +2,8 @@
 
 namespace App\Command;
 
-use Pimcore\Model\DataObject\Team;
+use Pimcore\Model\DataObject\Soccerteam;
+use Pimcore\Model\Asset\Image;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -52,13 +53,31 @@ class ImportTeamsCommand extends Command
          foreach ($data as $row) {
              $teamData = array_combine($headers, $row);
 
+             
 
 
-             $team = new Team();
+             $team = new Soccerteam();
+             $team->setParentId(17);
              $team->setKey($teamData['team_name']);
-             $team->setTeamName($teamData['team_name']);
-             $team->setTeamFoundingDate($teamData['team_foundingDate']);
-             $team->setTeamTrainer($teamData['team_trainer']);
+             $team->setTeam_name($teamData['team_name']);
+             $team->setTeam_foundingDate($teamData['team_foundingDate']);
+             $team->setTeam_trainer($teamData['team_trainer']);
+             
+            // Load the existing asset by path
+            $logoPath = $teamData['team_logo']; 
+            $image = Image::getByPath($logoPath);
+
+            if ($image instanceof Image) {
+                // Assign the image asset to the soccer team
+                $team->setTeam_logo($image);
+                $output->writeln('<info>Logo found and assigned: ' . $logoPath . '</info>');
+            } else {
+                $output->writeln('<error>Logo asset not found: ' . $logoPath . '</error>');
+            }
+
+
+
+             $team->setPublished(true);
              $team->save();
 
              $output->writeln('Imported team: ' . $teamData['team_name'] . ' foundingDate: ' . $teamData['team_foundingDate'] . ' Trainer: ' . $teamData['team_trainer']);
