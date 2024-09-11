@@ -65,3 +65,21 @@ Be aware that this might lead to a theoretically compatible but untested combina
 
 ## Other demo/skeleton packages
 - [Pimcore Basic Demo](https://github.com/pimcore/demo)
+
+# Importing Data from Excel Files
+
+To import data from the Excel files, follow these steps:
+1. Access the project container
+Run the following command to access the root of the container as the root user:
+`docker exec -u root -it my-project-supervisord-1 /bin/bash`
+
+2. Run the CLI commands to import the data
+    Execute the following commands in sequence to load the data into the system:
+    1. Import Locations
+    `php bin/console app:import-locations /var/www/html/StandortDaten.xlsx`
+
+    2. Import Teams
+    `php bin/console app:import-teams /var/www/html/VereinsDaten.xlsx`
+    
+    3. mport Players
+    `php bin/console app:import-players /var/www/html/SpielerDaten.xlsx`
