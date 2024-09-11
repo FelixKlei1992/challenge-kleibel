@@ -4,6 +4,7 @@ namespace App\Command;
 
 use Carbon\Carbon;
 use Pimcore\Model\DataObject\Player;
+use Pimcore\Model\DataObject\Soccerteam;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -91,6 +92,29 @@ class ImportPlayersCommand extends Command
 
             $player->setPublished(true);
             $player->save();
+
+            //add player to team
+            $teamName = $playerData['player_team'];
+            $teamList = Soccerteam::getByTeam_name($teamName);
+        
+            //check if team exists
+            if ($teamList instanceof \Pimcore\Model\DataObject\Soccerteam\Listing && count($teamList) > 0) {
+                // Get the first team from the list
+                $team = $teamList->current();
+
+                //get a list of all the teams existing players and add the new player
+                $existingPlayers = $team->getPlayer();
+                if (!is_array($existingPlayers)) {
+                    $existingPlayers = [];
+                }
+                $existingPlayers[] = $player;
+                
+                $team->setPlayer($existingPlayers);
+                $team->save();
+            } else {
+                $output->writeln('<error>Team not found: ' . $teamName . '</error>');
+                continue;
+            }
 
             $output->writeln('Imported player: ' . $playerData['player_firstName'] . ' ' . $playerData['player_lastName'] . ' - Number: ' . $playerData['player_number'] . ' -Date of Birth: ' . $playerData['player_dateOfBirth']);
         }
