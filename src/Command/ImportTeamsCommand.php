@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use Pimcore\Model\DataObject\Soccerteam;
+use \Pimcore\Model\DataObject\Location;
 use Pimcore\Model\Asset\Image;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Symfony\Component\Console\Command\Command;
@@ -75,10 +76,25 @@ class ImportTeamsCommand extends Command
                 $output->writeln('<error>Logo asset not found: ' . $logoPath . '</error>');
             }
 
+            // Assign location
+            $locationName = $teamData['location_name'];
+            $locationList = Location::getByLocation_name($locationName);
 
+            $output->writeln('Team class: ' . (is_object($locationList) ? get_class($locationList) : 'Not an object'));
+            
+            if ($locationList instanceof \Pimcore\Model\DataObject\Location\Listing && count($locationList) > 0) {
+                // Get the first location from the list
+                $location = $locationList->current(); 
+                $team->setLocation($location);
+                $output->writeln('<info>Location assigned: ' . $locationName . '</info>');
+            } else {
+                $output->writeln('<error>Location not found: ' . $locationName . '</error>');
+            }
+            
 
-             $team->setPublished(true);
-             $team->save();
+            // Save the team
+            $team->setPublished(true);
+            $team->save();
 
              $output->writeln('Imported team: ' . $teamData['team_name'] . ' foundingDate: ' . $teamData['team_foundingDate'] . ' Trainer: ' . $teamData['team_trainer']);
         }
