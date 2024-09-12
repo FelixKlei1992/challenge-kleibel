@@ -81,7 +81,7 @@ class ImportLocationsCommand extends Command
 
     private function isValidGeoPoint($geoPoint)
     {
-        // Überprüfen, ob der GeoPoint im Format "latitude,longitude" vorliegt
+        // check geopoint format
         return preg_match('/^-?\d+\.\d+,\s*-?\d+\.\d+$/', $geoPoint);
     }
 
